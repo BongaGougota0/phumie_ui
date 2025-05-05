@@ -6,6 +6,9 @@ export interface Post {
     post_date: Date;
     likes_count: number;
     post_comments: Comment[];
+
+    // added to update feed post display
+    like: boolean; // if true cannot like again, else make like button active.
 }
 
 export interface Comment {
