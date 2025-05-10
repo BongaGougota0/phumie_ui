@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserLoginDetails } from '../app_models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { UserLoginDetails, UserRegisterDetails } from '../app_models/user.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { UserDataService } from './user-data.service';
 import { global_variables } from '../environments/environments';
 import { map, Observable } from 'rxjs';
@@ -25,8 +25,18 @@ export class AuthenticationService {
     )
   }
 
+  signUpUser(signupData : UserRegisterDetails) : Observable<any>
+  {
+    return this.http.post<any>(`${this.url}/users`, signupData);
+  }
+
   logout()
   {
     this.userDataService.cleatUserData();
+  }
+
+  handleErrors(error : HttpErrorResponse)
+  {
+    
   }
 }

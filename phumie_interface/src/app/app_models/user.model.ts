@@ -1,7 +1,8 @@
 export interface UserRegisterDetails {
     username: string;
-    email: string;
+    userEmail: string;
     password: string;
+    aboutUser: string;
 }
 
 export interface UserLoginDetails {
