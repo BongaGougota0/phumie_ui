@@ -25,7 +25,7 @@ export class UserDataService {
     this.currentUserDataSubject$.subscribe(
       (data) => {
         return data;
-      }
+      },
     )
   }
 

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-post-modal',
   imports: [],
   templateUrl: './post-modal.component.html',
-  styleUrl: '../authenticated_user/feed/feed.component.css'
+  styleUrl: '../../authenticated_user/feed/feed.component.css'
 })
 export class PostModalComponent {
 

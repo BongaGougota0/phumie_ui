@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './authentication_components/login/login.component';
-import { SignupComponent } from './authentication_components/signup/signup.component';
+import { LoginComponent } from './auth_components/login/login.component';
+import { SignupComponent } from './auth_components/signup/signup.component';
 import { PhumieIndexComponent } from './phumie-index/phumie-index.component';
 import { USER_AUTHENTICATED_ROUTES } from './authenticated_user/authenticated_user_routes';
 
