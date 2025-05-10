@@ -1,0 +1,413 @@
+.container {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    min-width: 600px;
+    border-left: 1px solid #2f3336;
+    border-right: 1px solid #2f3336;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #2f3336;
+    padding: 16px;
+    z-index: 10;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Compose Tweet */
+.compose-tweet {
+    padding: 16px;
+    border-bottom: 1px solid #2f3336;
+}
+
+.compose-area {
+    display: flex;
+    gap: 12px;
+}
+
+.compose-form {
+    flex: 1;
+}
+
+.compose-input {
+    width: 100%;
+    min-height: 60px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+    resize: none;
+}
+
+.compose-input::placeholder {
+    color: #71767b;
+}
+
+.compose-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #2f3336;
+}
+
+.compose-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.post-button {
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Tweet Styles */
+.tweet {
+    padding: 16px;
+    border-bottom: 1px solid #2f3336;
+    transition: background-color 0.2s;
+}
+
+.tweet:hover {
+    background-color: rgba(239, 243, 244, 0.03);
+}
+
+.tweet-header {
+    display: flex;
+    gap: 12px;
+}
+
+.tweet-user-info {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.handle {
+    color: #71767b;
+}
+
+.tweet-content {
+    flex: 1;
+}
+
+.tweet-text {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.tweet-actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+    padding-right: 20px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #71767b;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.action-button:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+    color: #1d9bf0;
+}
+
+.action-button.like:hover {
+    background-color: rgba(249, 24, 128, 0.1);
+    color: #f91880;
+}
+
+.action-button.retweet:hover {
+    background-color: rgba(0, 186, 124, 0.1);
+    color: #00ba7c;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    width: 350px;
+    padding: 16px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #202327;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.search-box::placeholder {
+    color: #71767b;
+}
+
+.widget {
+    background-color: #16181c;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.widget-header {
+    padding: 16px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.trending-item {
+    padding: 12px 16px;
+    border-top: 1px solid #2f3336;
+    cursor: pointer;
+}
+
+.trending-item:hover {
+    background-color: rgba(239, 243, 244, 0.03);
+}
+
+.trending-category {
+    color: #71767b;
+    font-size: 13px;
+}
+
+.trending-topic {
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.trending-posts {
+    color: #71767b;
+    font-size: 13px;
+}
+
+/* Tweet Button in Sidebar */
+.tweet-button {
+    width: 90%;
+    padding: 15px;
+    margin: 20px auto;
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+}
+
+.tweet-button:hover {
+    background-color: #1a8cd8;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(91, 112, 131, 0.4);
+    z-index: 1000;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+.post-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    border-radius: 16px;
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.modal-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2f3336;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #71767b;
+    cursor: pointer;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+.drafts-button {
+    background: none;
+    border: none;
+    color: #1d9bf0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.drafts-button:hover {
+    text-decoration: underline;
+}
+
+.modal-compose {
+    padding: 16px;
+}
+
+.modal-reply-notice {
+    font-size: 15px;
+    color: #1d9bf0;
+    margin-bottom: 8px;
+    margin-left: 60px;
+}
+
+.modal-compose-area {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.modal-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #1d9bf0;
+    flex-shrink: 0;
+}
+
+.modal-compose-form {
+    flex: 1;
+}
+
+.modal-visibility {
+    margin-bottom: 12px;
+}
+
+.visibility-dropdown {
+    background: none;
+    border: 1px solid #1d9bf0;
+    color: #1d9bf0;
+    padding: 6px 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.modal-compose-input {
+    width: 100%;
+    min-height: 100px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+    resize: none;
+}
+
+.modal-compose-input::placeholder {
+    color: #71767b;
+}
+
+.modal-actions {
+    border-top: 1px solid #2f3336;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-compose-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.modal-icon-button {
+    background: none;
+    border: none;
+    color: #1d9bf0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.modal-post-button {
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-post-button:hover {
+    background-color: #1a8cd8;
+}
+
+@media (max-width: 660px) {
+    .post-modal {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+    }
+}

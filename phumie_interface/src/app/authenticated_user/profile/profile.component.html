@@ -1,1 +1,60 @@
-<p>profile works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="profile-container">
+        <header class="profile-header">
+            <button class="back-button" onclick="history.back()">←</button>
+            <div class="profile-nav-info">
+                <h1>John Doe</h1>
+                <span>234 posts</span>
+            </div>
+        </header>
+        
+        <div class="profile-banner">
+            <div class="profile-avatar"></div>
+        </div>
+        
+        <div class="profile-actions">
+            <button class="edit-profile-button">Edit profile</button>
+        </div>
+        
+        <div class="profile-info">
+            <h2 class="profile-name">John Doe</h2>
+            <p class="profile-handle">@johndoe</p>
+            <p class="profile-bio">Full-stack developer | Tech enthusiast | Coffee addict ☕ | Building cool stuff on the web</p>
+            
+            <div class="profile-metadata">
+                <span>🗓️ Joined March 2020</span>
+                <span>🔗 johndoe.dev</span>
+                <span>📍 San Francisco, CA</span>
+            </div>
+            
+            <div class="profile-stats">
+                <a href="#" class="profile-stat"><strong>456</strong> Following</a>
+                <a href="#" class="profile-stat"><strong>1,234</strong> Followers</a>
+            </div>
+        </div>
+        
+        <nav class="profile-tabs">
+            <button class="profile-tab active">Posts</button>
+            <button class="profile-tab">Replies</button>
+            <button class="profile-tab">Highlights</button>
+            <button class="profile-tab">Media</button>
+            <button class="profile-tab">Likes</button>
+        </nav>
+        
+        <div class="profile-content">
+            <div class="empty-state">
+                <h3>You haven't posted anything yet</h3>
+                <p>When you post, your posts will show up here.</p>
+                <button class="form-button" style="width: auto; padding: 8px 24px;">Post now</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

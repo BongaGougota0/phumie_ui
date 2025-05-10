@@ -1,1 +1,44 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to phumie</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+            </svg>
+        </div>
+        
+        <h1 class="auth-title">Sign in to phumie</h1>
+        
+        <form>
+            <button type="button" class="social-button">
+                <span>📧</span> Sign in with Google
+            </button>
+            
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Phone, email, or username</label>
+                <input type="text" class="form-input" name="identifier">
+            </div>
+            
+            <button type="submit" class="form-button">Next</button>
+            
+            <button type="button" class="form-button" style="background: transparent; border: 1px solid #536471; color: #fff;">
+                Forgot password?
+            </button>
+        </form>
+        
+        <div class="switch-auth">
+            Don't have an account? <a routerLink="/signup" class="auth-link">Sign up</a>
+        </div>
+    </div>
+</body>
+</html>

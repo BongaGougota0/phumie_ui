@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - pumie</title>
+    <title>Home - phumie</title>
 </head>
 <body>
     <div class="container">
@@ -23,7 +23,7 @@
                 <li class="nav-item"><a href="profile.html">Profile</a></li>
                 <li class="nav-item">More</li>
             </ul>
-            <button class="tweet-button" onclick="openPostModal()">Post</button>
+            <button class="tweet-button" (click)="openPostModal()">Post</button>
         </nav>
 
         <!-- Main Content -->
@@ -57,7 +57,7 @@
                     <div class="tweet-content">
                         <div class="tweet-user-info">
                             <span class="username">John Doe</span>
-                            <span class="handle">@johndoe</span>
+                            <span class="handle">johndoe</span>
                             <span class="handle">· 2h</span>
                         </div>
                         <div class="tweet-text">
@@ -87,7 +87,7 @@
                     <div class="tweet-content">
                         <div class="tweet-user-info">
                             <span class="username">Jane Smith</span>
-                            <span class="handle">@janesmith</span>
+                            <span class="handle">janesmith</span>
                             <span class="handle">· 5h</span>
                         </div>
                         <div class="tweet-text">
@@ -175,6 +175,6 @@
         </div>
     </div>
 
-    <!-- <script src="js/home.js"></script> -->
+    <script src="js/home.js"></script>
 </body>
 </html>

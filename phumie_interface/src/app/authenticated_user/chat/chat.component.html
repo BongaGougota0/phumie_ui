@@ -1,1 +1,118 @@
-<p>chat works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - phumie</title>
+</head>
+<body>
+    <div class="messages-container">
+        <!-- Left Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+                </svg>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item">Explore</li>
+                <li class="nav-item">Notifications</li>
+                <li class="nav-item active">Messages</li>
+                <li class="nav-item">Bookmarks</li>
+                <li class="nav-item"><a href="profile.html">Profile</a></li>
+                <li class="nav-item">More</li>
+            </ul>
+        </nav>
+
+        <!-- Conversations Panel -->
+        <div class="conversations-panel">
+            <div class="conversations-header">
+                <h1>Messages</h1>
+                <div class="conversations-tabs">
+                    <div class="tab active">Primary</div>
+                    <div class="tab">Requests</div>
+                </div>
+            </div>
+            
+            <div class="conversations-search">
+                <input type="text" class="search-input" placeholder="Search Direct Messages">
+            </div>
+            
+            <div class="conversations-list">
+                <div class="conversation-item active">
+                    <div class="conversation-avatar"></div>
+                    <div class="conversation-info">
+                        <div class="conversation-header">
+                            <span class="conversation-name">Sarah Johnson</span>
+                            <span class="conversation-time">2m</span>
+                        </div>
+                        <div class="conversation-preview">Hey! How's the project going?</div>
+                    </div>
+                </div>
+                
+                <div class="conversation-item">
+                    <div class="conversation-avatar" style="background-color: #7856ff;"></div>
+                    <div class="conversation-info">
+                        <div class="conversation-header">
+                            <span class="conversation-name">Mike Chen</span>
+                            <span class="conversation-time">15m</span>
+                        </div>
+                        <div class="conversation-preview">Thanks for sharing the document!</div>
+                    </div>
+                    <div class="unread-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Thread -->
+        <div class="message-thread active">
+            <div class="thread-header">
+                <div class="thread-avatar"></div>
+                <div class="thread-user-info">
+                    <div class="thread-user-name">Sarah Johnson</div>
+                    <div class="thread-user-handle">@sarahjohnson</div>
+                </div>
+                <div class="thread-actions">
+                    <button class="thread-action">📞</button>
+                    <button class="thread-action">ℹ️</button>
+                </div>
+            </div>
+            
+            <div class="messages">
+                <div class="message">
+                    <div class="message-avatar"></div>
+                    <div class="message-content">
+                        <div class="message-text">Hi there! How's everything going?</div>
+                        <div class="message-time">Yesterday 3:41 PM</div>
+                    </div>
+                </div>
+                
+                <div class="message sent">
+                    <div class="message-avatar"></div>
+                    <div class="message-content">
+                        <div class="message-text">Hey Sarah! Things are great, thanks for asking. How about you?</div>
+                        <div class="message-time">Yesterday 3:45 PM</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <textarea class="message-input" placeholder="Start a new message" rows="1"></textarea>
+                    <button class="send-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 3l7.33 4.62L3 12.24V3m7.33 12.62L3 21v-5.76l7.33-4.62M21 12L3 3v18l18-9z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Message Button -->
+    <button class="new-message-button">✉️</button>
+
+    <!-- <script src="js/messages.js"></script> -->
+</body>
+</html>
