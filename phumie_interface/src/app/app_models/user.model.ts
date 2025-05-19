@@ -1,17 +1,12 @@
-export interface UserRegisterDetails {
+export interface PhumieUserDto {
     username: string;
     userEmail: string;
-    password: string;
+    password?: string;
+    userRole: string;
     aboutUser: string;
 }
 
-export interface UserLoginDetails {
-    email: string;
+export interface LoginCredentials {
+    usernameEmail: string;
     password: string;
-}
-
-export interface User {
-    user_id: number;
-    username: string;
-    email: string;
 }

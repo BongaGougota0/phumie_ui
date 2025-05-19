@@ -1,6 +1,13 @@
-import { User } from "./user.model";
+import { PhumieUserDto } from "./user.model";
 
-export interface LoginSuccess {
-    user: User;
+export interface ResponseDto {
+    microserviceName: string;
+    message: string;
+    status: string;
+    timestamp: Date;
+}
+
+export interface AuthenticationDto {
     jwt: string;
+    phumieUserDto: PhumieUserDto;
 }
