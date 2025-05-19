@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../app_models/user.model';
+import { PhumieUserDto } from '../app_models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { global_variables } from '../environments/environments';
 import { UserLikes } from '../app_models/metric.data';
@@ -10,12 +10,12 @@ import { UserLikes } from '../app_models/metric.data';
 })
 export class UserDataService {
   url = global_variables.base_url;
-  private userDataSubject = new BehaviorSubject<User | null>(null);
+  private userDataSubject = new BehaviorSubject<PhumieUserDto | null>(null);
   currentUserDataSubject$ = this.userDataSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  setUserData(user: User)
+  setUserData(user: PhumieUserDto)
   {
     this.userDataSubject.next(user);
   }

@@ -36,7 +36,7 @@ export class PostsService {
 
   getUserId(): Observable<number | null> {
     return this.userDataService.currentUserDataSubject$.pipe(
-      map(data => data?.user_id || null)
+      map(data => 0 || null)
     );
   }
 

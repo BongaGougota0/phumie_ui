@@ -12,32 +12,35 @@
                 <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
             </svg>
         </div>
-        
         <h1 class="auth-title">Sign in to phumie</h1>
-        
-        <form>
-            <button type="button" class="social-button">
-                <span>📧</span> Sign in with Google
-            </button>
-            
-            <div class="auth-divider">
-                <span>or</span>
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+            <div class="form-group">
+                <label class="form-label">Email or username</label>
+                <input type="text" class="form-input"
+                formControlName="usernameEmail" required name="usernameEmail">
+                <div *ngIf="loginForm.get('usernameEmail')?.invalid && (loginForm.get('usernameEmail')?.dirty || loginForm.get('usernameEmail')?.touched)" class="error-message">
+                    <div *ngIf="loginForm.get('usernameEmail')?.errors?.['required']">Email or username is required</div>
+                    <div *ngIf="loginForm.get('usernameEmail')?.errors?.['pattern']">Please enter a valid email or username</div>
+                </div>
             </div>
             
             <div class="form-group">
-                <label class="form-label">Phone, email, or username</label>
-                <input type="text" class="form-input" name="identifier">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input"
+                formControlName="password" required name="password">
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error-message">
+                    <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
+                </div>
             </div>
-            
-            <button type="submit" class="form-button">Next</button>
-            
-            <button type="button" class="form-button" style="background: transparent; border: 1px solid #536471; color: #fff;">
-                Forgot password?
-            </button>
+            <button (click)="loginSubmit()" type="button" class="form-button">Login</button>
         </form>
         
         <div class="switch-auth">
             Don't have an account? <a routerLink="/signup" class="auth-link">Sign up</a>
+        </div>
+        <div class="switch-auth">
+            Forgot password? <a routerLink="/signup" class="auth-link">Reset</a>
         </div>
     </div>
 </body>
