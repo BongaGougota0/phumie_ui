@@ -29,7 +29,6 @@ export class SignupComponent {
     this.authService.signUpUser(this.signUpForm.value).subscribe(
       {
         next: (resp) => {
-          console.log(`View returned user data ${resp.phumieUserDto.password}`);
           this.router.navigate(['feed']);
         },
         error: (err) => {

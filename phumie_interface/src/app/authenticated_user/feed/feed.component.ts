@@ -4,10 +4,11 @@ import { NgIf, NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostsService } from '../../app_services/posts/posts.service';
 import { Post } from '../../app_models/post.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
-  imports: [PostModalComponent, NgIf, NgClass],
+  imports: [PostModalComponent, NgIf, NgClass, RouterLink],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css'
 })
