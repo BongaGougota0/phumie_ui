@@ -15,32 +15,48 @@
         
         <h1 class="auth-title">Create your account</h1>
         
-        <form>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
             <div class="form-group">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-input" name="name" required>
+                <label class="form-label">Create Username</label>
+                <input type="text" class="form-input"
+                formControlName="username" required name="username">
+                <div *ngIf="signUpForm.get('username')?.invalid && (signUpForm.get('username')?.dirty || signUpForm.get('username')?.touched)" class="error-message">
+                    <div *ngIf="signUpForm.get('username')?.errors?.['required']">username is required</div>
+                    <div *ngIf="signUpForm.get('username')?.errors?.['pattern']">Please enter a valid email or username</div>
+                </div>
             </div>
             
             <div class="form-group">
-                <label class="form-label">Phone or email</label>
-                <input type="text" class="form-input" name="email" required>
+                <label class="form-label">Enter Email</label>
+                <input type="text" class="form-input"
+                formControlName="userEmail" required name="userEmail">
+                <div *ngIf="signUpForm.get('userEmail')?.invalid && (signUpForm.get('userEmail')?.dirty || signUpForm.get('userEmail')?.touched)" class="error-message">
+                    <div *ngIf="signUpForm.get('userEmail')?.errors?.['required']">Email is required</div>
+                    <div *ngIf="signUpForm.get('userEmail')?.errors?.['pattern']">Please enter a valid email</div>
+                </div>
             </div>
-            
-            <div class="auth-divider">
-                <span>Use email instead</span>
-            </div>
-            
+
             <div class="form-group">
+                <label class="form-label">Create Password</label>
+                <input type="password" class="form-input"
+                formControlName="password" required name="password">
+                <div *ngIf="signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)" class="error-message">
+                    <div *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required</div>
+                    <div *ngIf="signUpForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            
+            <!-- <div class="form-group">
                 <label class="form-label">Date of birth</label>
                 <p class="auth-subtitle" style="margin-bottom: 16px;">This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
                 <input type="date" class="form-input" name="dob" required>
-            </div>
+            </div> -->
             
-            <button type="submit" class="form-button">Next</button>
+            <button (click)="signUpUser()" type="submit" class="form-button">Sign Up</button>
         </form>
         
         <div class="switch-auth">
-            Have an account already? <a routerLink="signin" class="auth-link">Sign in</a>
+            Have an account already? <a routerLink="/login" class="auth-link">Sign in</a>
         </div>
     </div>
 </body>

@@ -26,9 +26,16 @@ export class AuthenticationService {
     )
   }
 
-  signUpUser(signupData : PhumieUserDto) : Observable<any>
+  signUpUser(signupData : PhumieUserDto) : Observable<AuthenticationDto>
   {
-    return this.http.post<any>(`${this.url}/auth/signup`, signupData);
+    return this.http.post<AuthenticationDto>(`${this.url}/auth/signup`, signupData)
+    .pipe(
+      map((data) => {
+        this.userDataService.setUserData(data.phumieUserDto);
+        localStorage.setItem('jwt_key', data.jwt);
+        return data;
+      })
+    );
   }
 
   logout()

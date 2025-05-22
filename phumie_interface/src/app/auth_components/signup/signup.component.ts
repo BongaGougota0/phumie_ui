@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../app_services/authentication.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
-  imports: [RouterLink],
+  imports: [RouterLink, ReactiveFormsModule, NgIf],
   templateUrl: './signup.component.html',
   styleUrl: '../login/login.component.css'
 })
 export class SignupComponent {
   signUpForm!: FormGroup;
 
-  constructor(private authService: AuthenticationService, private fb: FormBuilder){
+  constructor(private router: Router, private authService: AuthenticationService, private fb: FormBuilder){
     this.signUpForm = this.fb.group({
       username: ['', [Validators.min(4), Validators.max(14)]],
       userEmail: ['', [Validators.email]],
-      password: ['', [Validators.min(8), Validators.max(14)]]
+      password: ['', [Validators.min(8), Validators.max(14)]],
+      userRole: 'USER'
     })
   }
 
@@ -24,6 +26,16 @@ export class SignupComponent {
   {
     if(!this.signUpForm.valid){return;}
 
-    this.authService.login
+    this.authService.signUpUser(this.signUpForm.value).subscribe(
+      {
+        next: (resp) => {
+          console.log(`View returned user data ${resp.phumieUserDto.password}`);
+          this.router.navigate(['feed']);
+        },
+        error: (err) => {
+          console.log(`An error occured. ${err}`);
+        }
+      }
+    )
   }
 }
