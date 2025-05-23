@@ -29,7 +29,7 @@ export class UserDataService {
     )
   }
 
-  cleatUserData()
+  clearUserData()
   {
     this.userDataSubject.next(null);
   }
