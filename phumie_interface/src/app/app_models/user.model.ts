@@ -1,4 +1,5 @@
 export interface PhumieUserDto {
+    userId?: number;
     username: string;
     userEmail: string;
     password?: string;

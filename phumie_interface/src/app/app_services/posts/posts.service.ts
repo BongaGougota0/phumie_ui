@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { global_variables } from '../../environments/environments';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, pipe, switchMap } from 'rxjs';
 import { Post } from '../../app_models/post.model';
 import { UserDataService } from '../user-data.service';
 
@@ -18,20 +18,31 @@ export class PostsService {
     return this.http.get<Post[]>(`${this.base_url}/posts`);
   }
 
-  newPost(newPost: Post) : Observable<any>
-  {
-    return this.getUserId().pipe(
-      map(userId => {
-        newPost.author = userId ? userId.toString() : '';
+  newPost(newPost: Post) : Observable<any> {
+  return this.userDataService.currentUserDataSubject$.pipe(
+    map(data => {
+      if (!data?.userId || !data?.username) {
+          throw new Error('User data is not available');
+        }
+
+        const userData = {
+          "userId": data?.userId,
+          "username": data?.username,
+        };
+        
+        newPost.userId = userData.userId;
+        newPost.postAuthor = userData.username;
         return newPost;
       }),
-      switchMap(post => this.http.post<any>(`${this.base_url}/posts`, post))
+      switchMap(updatedPost => 
+        this.http.post<any>(`${this.base_url}/v1/post`, updatedPost)
+      )
     );
   }
 
   getPostById(postId: number) : Observable<Post>
   {
-    return this.http.get<Post>(`${this.base_url}/posts/${postId}`);
+    return this.http.get<Post>(`${this.base_url}/v1/post/${postId}`);
   }
 
   getUserId(): Observable<number | null> {

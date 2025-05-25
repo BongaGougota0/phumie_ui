@@ -1,11 +1,12 @@
 export interface Post {
-    post_id?: number;
-    author: string;
-    post_content: string;
+    postId?: number;
+    userId: number;
+    postAuthor: string;
+    postContent: string;
     post_image?: string;
-    post_date: Date;
-    likes_count: number;
-    post_comments: Comment[];
+    postDate: Date;
+    likesCount: number;
+    postComments: number;
 
     // added to update feed post display
     like: boolean; // if true cannot like again, else make like button active.
