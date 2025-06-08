@@ -34,12 +34,11 @@ export class FeedComponent {
   {
     if(!this.postForm.valid){return};
     
-    const postData: Post = {
-      author : '',
-      post_content : this.postForm.get('post_content')?.value,
-      likes_count : 0,
-      post_date : new Date(),
-      post_comments : [],
+    const postData: any = {
+      postContent : this.postForm.get('post_content')?.value,
+      likesCount : 0,
+      postDate : new Date(),
+      postComments : 0,
       like : false
     };
     this.postService.newPost(postData);
