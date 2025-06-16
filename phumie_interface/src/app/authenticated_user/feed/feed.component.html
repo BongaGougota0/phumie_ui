@@ -31,6 +31,7 @@
                 <h1>Home</h1>
             </header>
 
+            <!--Default form ontop to post-->
             <div class="compose-tweet">
                 <div class="compose-area">
                     <div class="avatar"></div>
@@ -50,6 +51,7 @@
                 </div>
             </div>
 
+            <!--Posts lists comes here.-->
             <div class="tweet">
                 <div class="tweet-header">
                     <div class="avatar"></div>
@@ -137,47 +139,6 @@
     </div>
 
     <!-- Modal Overlay -->
-    <div 
-        *ngIf="displayModal" 
-        class="modal-overlay" 
-        (click)="closePostModal()"
-        [ngClass]="{'show': displayModal}"
-    >
-        <div class="post-modal" (click)="$event.stopPropagation()">
-            <div class="modal-header">
-                <button class="modal-close" (click)="closePostModal()">×</button>
-                <button class="drafts-button">Drafts</button>
-            </div>
-            
-            <div class="modal-compose">
-                <div class="modal-reply-notice">🌐 Everyone can reply</div>
-                
-                <div class="modal-compose-area">
-                    <div class="modal-avatar"></div>
-                    <form class="modal-compose-form">
-                        <div class="modal-visibility">
-                            <button type="button" class="visibility-dropdown">
-                                Everyone 
-                                <span>▼</span>
-                            </button>
-                        </div>
-                        <textarea class="modal-compose-input" placeholder="What's happening?"></textarea>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="modal-actions">
-                <div class="modal-compose-icons">
-                    <button class="modal-icon-button">📷</button>
-                    <button class="modal-icon-button">📊</button>
-                    <button class="modal-icon-button">😊</button>
-                    <button class="modal-icon-button">🗓️</button>
-                    <button class="modal-icon-button">📍</button>
-                </div>
-                <button class="modal-post-button">Post</button>
-            </div>
-        </div>
-    </div>
-    
+    <app-post-modal (close)="handleModalEvent($event)" *ngIf="displayModal"></app-post-modal>
 </body>
 </html>

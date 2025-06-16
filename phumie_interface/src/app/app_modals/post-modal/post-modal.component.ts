@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-post-modal',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: '../../authenticated_user/feed/feed.component.css'
 })
 export class PostModalComponent {
+  @Output() close = new EventEmitter();
 
+  closePostModal() {
+    this.close.emit(false);
+  }
 }

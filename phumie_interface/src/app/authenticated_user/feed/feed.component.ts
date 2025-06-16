@@ -51,4 +51,8 @@ export class FeedComponent {
       this.displayModal = !this.displayModal;
     }
   }
+
+  handleModalEvent(eventName: boolean){
+    this.displayModalSection(eventName);
+  }
 }
