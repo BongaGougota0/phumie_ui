@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - phumie</title>
+    <title>Welcome - phumie</title>
 </head>
 <body>
     <div class="container">
@@ -15,12 +15,8 @@
                 </svg>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item active">Home</li>
+                <li class="nav-item active">Welcome to phumie</li>
                 <li class="nav-item">Explore</li>
-                <li class="nav-item">Notifications</li>
-                <li class="nav-item"><a href="messages.html">Messages</a></li>
-                <li class="nav-item">Bookmarks</li>
-                <li class="nav-item"><a href="profile.html">Profile</a></li>
                 <li class="nav-item">More</li>
             </ul>
             <button class="tweet-button" (click)="openPostModal()">Post</button>
@@ -28,29 +24,11 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            
             <header class="header">
-                <h1>Home</h1>
+                <h1>Social Media Community</h1>
             </header>
-
-            <div class="compose-tweet">
-                <div class="compose-area">
-                    <div class="avatar"></div>
-                    <form class="compose-form">
-                        <textarea class="compose-input" placeholder="What is happening?!"></textarea>
-                        <div class="compose-actions">
-                            <div class="compose-icons">
-                                <button class="icon-button">📷</button>
-                                <button class="icon-button">📊</button>
-                                <button class="icon-button">😊</button>
-                                <button class="icon-button">🗓️</button>
-                                <button class="icon-button">📍</button>
-                            </div>
-                            <button class="post-button">Post</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
+            <!--Loop through posts here.-->
             <div class="tweet">
                 <div class="tweet-header">
                     <div class="avatar"></div>
@@ -110,6 +88,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
 
         <!-- Right Sidebar -->
