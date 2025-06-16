@@ -3,7 +3,6 @@ import { PostModalComponent } from '../../app_modals/post-modal/post-modal.compo
 import { NgIf, NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostsService } from '../../app_services/posts/posts.service';
-import { Post } from '../../app_models/post.model';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -37,7 +36,14 @@ export class FeedComponent {
       postComments : 0,
       like : false
     };
-    this.postService.newPost(postData);
+    this.postService.newPost(postData).subscribe({
+      next: (resp) => {
+        this.postForm.get('post_content')?.reset();
+      },
+      error: (err) => {
+        console.log(`handle error on post ${err}`);
+      }
+    });
   }
   
   displayModalSection(display?: boolean): void {
@@ -49,8 +55,6 @@ export class FeedComponent {
   }
 
   publishPostEvent(post_content: string){
-    console.log(`emitted data`);
-    console.log(`post data ${post_content}`);
     if(post_content){
       const postData: any = {
         postContent : post_content,
@@ -59,7 +63,15 @@ export class FeedComponent {
         postComments : 0,
         like : false
       }
-      this.postService.newPost(postData);
+      this.postService.newPost(postData).subscribe({
+        next: (resp) => {
+          console.log(resp);
+          this.displayModalSection(false);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
     }
   }
 
