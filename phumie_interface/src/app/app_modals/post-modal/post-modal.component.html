@@ -8,17 +8,21 @@
             
             <div class="modal-compose">
                 <div class="modal-reply-notice">🌐 Everyone can reply</div>
-                
                 <div class="modal-compose-area">
                     <div class="modal-avatar"></div>
-                    <form class="modal-compose-form">
+                    <form class="modal-compose-form" [formGroup]="postForm" (ngSubmit)="publishPost()">
                         <div class="modal-visibility">
                             <button type="button" class="visibility-dropdown">
                                 Everyone 
                                 <span>▼</span>
                             </button>
                         </div>
-                        <textarea class="modal-compose-input" placeholder="What's happening?"></textarea>
+                        <textarea 
+                            class="modal-compose-input" 
+                            placeholder="What's happening?"
+                            formControlName="post_content">
+                            <div *ngIf="postForm.get('post_content')?.errors?.['length']">min length 10 chars and max length 366 chars</div>
+                        </textarea>
                     </form>
                 </div>
             </div>
@@ -31,7 +35,7 @@
                     <button class="modal-icon-button">🗓️</button>
                     <button class="modal-icon-button">📍</button>
                 </div>
-                <button class="modal-post-button">Post</button>
+                <button class="modal-post-button" (click)="publishPost()">Post</button>
             </div>
         </div>
     </div>

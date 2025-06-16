@@ -35,8 +35,15 @@
             <div class="compose-tweet">
                 <div class="compose-area">
                     <div class="avatar"></div>
-                    <form class="compose-form">
-                        <textarea class="compose-input" placeholder="What is happening?!"></textarea>
+                    <form class="compose-form" [formGroup]="postForm">
+                        <textarea 
+                            class="compose-input" 
+                            placeholder="What is happening?!"
+                            formControlName="post_content">
+                            <div *ngIf="postForm.get('post_content')?.invalid && (postForm.get('post_content')?.dirty || postForm.get('post_content')?.touched)" class="error-message">
+                                <div *ngIf="postForm.get('post_content')?.errors?.['required']">Min post content length is 10 characters and max length is 366 characters</div>
+                            </div>
+                        </textarea>
                         <div class="compose-actions">
                             <div class="compose-icons">
                                 <button class="icon-button">📷</button>
@@ -111,6 +118,7 @@
                     </div>
                 </div>
             </div>
+
         </main>
 
         <!-- Right Sidebar -->
@@ -139,6 +147,6 @@
     </div>
 
     <!-- Modal Overlay -->
-    <app-post-modal (close)="handleModalEvent($event)" *ngIf="displayModal"></app-post-modal>
+    <app-post-modal (close)="handleModalEvent($event)" (post)="publishPostEvent($event)" *ngIf="displayModal"></app-post-modal>
 </body>
 </html>

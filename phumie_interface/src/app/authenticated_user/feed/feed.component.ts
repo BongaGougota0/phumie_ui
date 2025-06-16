@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { PostModalComponent } from '../../app_modals/post-modal/post-modal.component';
 import { NgIf, NgClass } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PostsService } from '../../app_services/posts/posts.service';
 import { Post } from '../../app_models/post.model';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
-  imports: [PostModalComponent, NgIf, NgClass, RouterLink],
+  imports: [PostModalComponent, NgIf, NgClass, RouterLink, ReactiveFormsModule],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css'
 })
@@ -18,16 +18,12 @@ export class FeedComponent {
 
   constructor(private postService: PostsService, private fb: FormBuilder){
     this.postForm = this.fb.group({
-      post_content: ['', [Validators.minLength(10), Validators.maxLength(300)]]
+      post_content: ['', [Validators.minLength(10), Validators.maxLength(366)]]
     })
   }
   
   openPostModal() {
     this.displayModal = true;
-  }
-  
-  closePostModal() {
-    this.displayModal = false;
   }
 
   publishPost()
@@ -49,6 +45,21 @@ export class FeedComponent {
       this.displayModal = display;
     } else {
       this.displayModal = !this.displayModal;
+    }
+  }
+
+  publishPostEvent(post_content: string){
+    console.log(`emitted data`);
+    console.log(`post data ${post_content}`);
+    if(post_content){
+      const postData: any = {
+        postContent : post_content,
+        likesCount : 0,
+        postDate : new Date(),
+        postComments : 0,
+        like : false
+      }
+      this.postService.newPost(postData);
     }
   }
 
