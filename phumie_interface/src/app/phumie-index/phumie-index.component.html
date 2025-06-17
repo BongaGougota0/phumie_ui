@@ -29,17 +29,17 @@
                 <h1>Social Media Community</h1>
             </header>
             <!--Loop through posts here.-->
-            <div class="tweet">
+            <div class="tweet" *ngFor="let post of posts">
                 <div class="tweet-header">
                     <div class="avatar"></div>
                     <div class="tweet-content">
                         <div class="tweet-user-info">
-                            <span class="username">John Doe</span>
-                            <span class="handle">johndoe</span>
-                            <span class="handle">· 2h</span>
+                            <span class="username">{{post.postAuthor}}</span>
+                            <span class="handle">{{post.postAuthor}}</span>
+                            <span class="handle">{{post.postDate}}</span>
                         </div>
                         <div class="tweet-text">
-                            This is a sample tweet in our Twitter-like template! 🚀 It looks pretty good, doesn't it?
+                            {{post.postContent}}
                         </div>
                         <div class="tweet-actions">
                             <button class="action-button">

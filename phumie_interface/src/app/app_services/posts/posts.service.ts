@@ -51,4 +51,8 @@ export class PostsService {
     );
   }
 
+  getHomeScreenPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.base_url}/v1/post/public`);
+  }
+
 }
