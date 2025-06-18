@@ -43,13 +43,13 @@
                         </div>
                         <div class="tweet-actions">
                             <button class="action-button">
-                                💬 <span>12</span>
+                                💬 <span>{{ post.commentsCount | 0}}</span>
                             </button>
                             <button class="action-button retweet">
                                 🔁 <span>45</span>
                             </button>
                             <button class="action-button like">
-                                ❤️ <span>127</span>
+                                ❤️ <span>{{ post.likesCount | 0}}</span>
                             </button>
                             <button class="action-button">
                                 📤 <span></span>
