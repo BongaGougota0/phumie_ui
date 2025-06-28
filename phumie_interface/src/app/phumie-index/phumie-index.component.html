@@ -30,14 +30,14 @@
             </header>
             <!--Loop through posts here.-->
             <div class="tweet" *ngFor="let post of posts">
-                <a href="" (click)="readPost(post.postId)">
+                <a routerLink="/post/{{post.postId}}">
                     <div class="tweet-header">
                         <div class="avatar"></div>
                         <div class="tweet-content">
                             <div class="tweet-user-info">
                                 <span class="username">{{post.postAuthor}}</span>
                                 <span class="handle">{{post.postAuthor}}</span>
-                                <span class="handle">{{post.postDate}}</span>
+                                <span class="handle">{{post.postDate | date:'mediumDate' }}</span>
                             </div>
                             <div class="tweet-text">
                                 {{post.postContent}}

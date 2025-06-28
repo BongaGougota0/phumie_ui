@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Comment, Post } from '../../app_models/post.model';
 import { PostsService } from '../../app_services/posts/posts.service';
-import { Subscription } from 'rxjs';
-import { Router, ActivatedRouteSnapshot } from '@angular/router';
+import { Subscription, map } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DatePipe, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-post',
-  imports: [],
+  imports: [DatePipe, NgFor],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
@@ -17,26 +18,34 @@ export class PostComponent {
   postSubscription = new Subscription;
   
   constructor(private postsService: PostsService, private router: Router,
-    private activatedRoute: ActivatedRouteSnapshot
+    private activatedRoute: ActivatedRoute
   ){}
 
   ngOnInit() {
-    const postId : any = this.activatedRoute.paramMap.get('id');
+    const postId : number = +(this.activatedRoute.snapshot.paramMap.get('id') || 0);
+    console.log(`Found route param as ${postId}`);
     if(postId){
       this.postSubscription = this.postsService.getPostById(postId).subscribe({
         next: (postObj) => {
           this.post = postObj;
+          this.getPostsComments(postId);
         },
         error: (err) => {
           console.log(`An error occured, ${err}`);
         }
       })
     }
-    this.getPosts();
   }
 
-  getPosts() {
-    // this.commentsSubscription = this.postsService.getPosts
+  getPostsComments(postId: number) {
+    this.commentsSubscription = this.postsService.getPostComments(postId).subscribe({
+      next: (resp) => {
+        this.comments = resp;
+      },
+      error: (err) => {
+        console.log(`Error fetching post comments ${err}`);
+      }
+    })
   }
 
   ngOnDestroy() {

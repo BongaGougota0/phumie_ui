@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit{
     this.authService.login(this.loginForm.value).subscribe(
       {
         next: (resp) => {
-          // console.log(`Authentication success, jwt = ${resp.jwt}`);
           this.router.navigate(['/feed']);
         },
         error: (err) => {

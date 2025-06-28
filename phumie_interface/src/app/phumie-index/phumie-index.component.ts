@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Post } from '../app_models/post.model';
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-phumie-index',
-  imports: [RouterLink, NgFor],
+  imports: [RouterLink, NgFor, DatePipe],
   templateUrl: './phumie-index.component.html',
   styleUrl: '../authenticated_user/feed/feed.component.css'
 })
@@ -39,6 +39,6 @@ export class PhumieIndexComponent {
 
   readPost(postId: any) {
     console.log(`navigating to view post.`);
-    this.route.navigateByUrl('/post', postId);
+    this.route.navigateByUrl('post', postId);
   }
 }

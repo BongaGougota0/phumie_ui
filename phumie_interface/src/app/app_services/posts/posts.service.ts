@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { global_variables } from '../../environments/environments';
 import { map, Observable, pipe, switchMap } from 'rxjs';
-import { Post } from '../../app_models/post.model';
+import { Post, Comment } from '../../app_models/post.model';
 import { UserDataService } from '../user-data.service';
 import { ResponseDto } from '../../app_models/reponse.model';
 
@@ -25,7 +25,6 @@ export class PostsService {
       if (!data?.userId || !data?.username) {
           throw new Error('User data is not available');
         }
-
         const userData = {
           "userId": data?.userId,
           "username": data?.username,
