@@ -26,67 +26,36 @@
         <main class="main-content">
             
             <header class="header">
-                <h1>Social Media Community</h1>
+                <h1>phumie Media Community</h1>
             </header>
             <!--Loop through posts here.-->
-            <div class="tweet">
-                <div class="tweet-header">
-                    <div class="avatar"></div>
-                    <div class="tweet-content">
-                        <div class="tweet-user-info">
-                            <span class="username">John Doe</span>
-                            <span class="handle">johndoe</span>
-                            <span class="handle">· 2h</span>
-                        </div>
-                        <div class="tweet-text">
-                            This is a sample tweet in our Twitter-like template! 🚀 It looks pretty good, doesn't it?
-                        </div>
-                        <div class="tweet-actions">
-                            <button class="action-button">
-                                💬 <span>12</span>
-                            </button>
-                            <button class="action-button retweet">
-                                🔁 <span>45</span>
-                            </button>
-                            <button class="action-button like">
-                                ❤️ <span>127</span>
-                            </button>
-                            <button class="action-button">
-                                📤 <span></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tweet">
-                <div class="tweet-header">
-                    <div class="avatar"></div>
-                    <div class="tweet-content">
-                        <div class="tweet-user-info">
-                            <span class="username">Jane Smith</span>
-                            <span class="handle">janesmith</span>
-                            <span class="handle">· 5h</span>
-                        </div>
-                        <div class="tweet-text">
-                            Check out this amazing CSS template! Perfect for creating social media layouts.
-                        </div>
-                        <div class="tweet-actions">
-                            <button class="action-button">
-                                💬 <span>8</span>
-                            </button>
-                            <button class="action-button retweet">
-                                🔁 <span>23</span>
-                            </button>
-                            <button class="action-button like">
-                                ❤️ <span>89</span>
-                            </button>
-                            <button class="action-button">
-                                📤 <span></span>
-                            </button>
+            <div class="tweet" *ngFor="let post of posts">
+                <a href="" (click)="readPost(post.postId)">
+                    <div class="tweet-header">
+                        <div class="avatar"></div>
+                        <div class="tweet-content">
+                            <div class="tweet-user-info">
+                                <span class="username">{{post.postAuthor}}</span>
+                                <span class="handle">{{post.postAuthor}}</span>
+                                <span class="handle">{{post.postDate}}</span>
+                            </div>
+                            <div class="tweet-text">
+                                {{post.postContent}}
+                            </div>
+                            <div class="tweet-actions">
+                                <button class="action-button">
+                                    💬 <span>{{post.postComments}}</span>
+                                </button>
+                                <button class="action-button like">
+                                    ❤️ <span>{{post.likesCount}}</span>
+                                </button>
+                                <button class="action-button">
+                                    📤 <span></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
         </main>

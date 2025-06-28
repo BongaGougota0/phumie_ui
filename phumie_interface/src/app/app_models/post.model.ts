@@ -13,9 +13,9 @@ export interface Post {
 }
 
 export interface Comment {
-    comment_id: number;
-    comment_content: string;
-    comment_image?: string;
-    comment_date: Date;
-    comment_author_name: string;
+    commentId: number;
+    commentContent: string;
+    commentImage?: string;
+    commentDate: Date;
+    commentAuthor: string;
 }

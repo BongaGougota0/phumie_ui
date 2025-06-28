@@ -4,6 +4,7 @@ import { global_variables } from '../../environments/environments';
 import { map, Observable, pipe, switchMap } from 'rxjs';
 import { Post } from '../../app_models/post.model';
 import { UserDataService } from '../user-data.service';
+import { ResponseDto } from '../../app_models/reponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PostsService {
 
   getPosts() : Observable<Post[]>
   {
-    return this.http.get<Post[]>(`${this.base_url}/posts`);
+    return this.http.get<Post[]>(`${this.base_url}/v1/post/all`);
   }
 
   newPost(newPost: Post) : Observable<any> {
@@ -49,6 +50,14 @@ export class PostsService {
     return this.userDataService.currentUserDataSubject$.pipe(
       map(data => 0 || null)
     );
+  }
+
+  getPostComments(postId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.base_url}/v1/comment/${postId}`);
+  }
+
+  postComment(comment: Comment) :Observable<ResponseDto> {
+    return this.http.post<ResponseDto>(`${this.base_url}/v1/comment`, comment);
   }
 
 }
